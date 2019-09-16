@@ -7,7 +7,7 @@ import querystring from "querystring";
 import striptags from "striptags";
 import { ISubtitle } from "./ISubtitle";
 
-import xml2js from "react-native-xml2js";
+const xml2js = require("react-native-xml2js");
 
 /**
  * Youtube Caption Retriever
@@ -119,7 +119,7 @@ export class YoutubeCaption {
 	 */
 	private parseString(xml: string): Promise<any> {
 		return new Promise<any>((resolve, reject) => {
-			xml2js.parseString(xml, (err, result) => {
+			xml2js.parseString(xml, (err: any, result: any) => {
 				if (err) {
 					return reject(err);
 				}
