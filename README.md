@@ -1,6 +1,6 @@
 # Youtube Captions Scraper (with React Native support)
 
-Note: This is forked from [syzer/youtube-captions-scraper](https://github.com/syzer/youtube-captions-scraper) for adding support of React Native
+Note: This is forked from [@drorgl/youtube-captions-scraper](https://github.com/drorgl/youtube-captions-scraper) and React Native support has been added.
 
 
 * Fetch Caption Tracks
@@ -10,7 +10,7 @@ Note: This is forked from [syzer/youtube-captions-scraper](https://github.com/sy
 
 ## Installation
 
- `> npm install @drorgl/youtube-captions-scraper`
+ `> npm install youtube-captions-scraper-react-native`
 
 ## Usage
 
