@@ -5,8 +5,9 @@ import { ICaptionTrack } from "./ICaptionTrack";
 import querystring from "querystring";
 
 import striptags from "striptags";
-import xml2js from "xml2js";
 import { ISubtitle } from "./ISubtitle";
+
+import xml2js from "react-native-xml2js";
 
 /**
  * Youtube Caption Retriever
