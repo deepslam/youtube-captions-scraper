@@ -69,7 +69,13 @@ export class YoutubeCaption {
 			return this._subtitles[lang];
 		}
 
-		const captionTracks = await this.getCaptionTracks();
+		let captionTracks = [];
+
+		try {
+			captionTracks = await this.getCaptionTracks();
+		} catch(e) {
+			throw new Error("Unable to receive tracks");
+		}
 		const captionTrack = captionTracks.find((v) => v.languageCode === lang);
 		if (!captionTrack) {
 			throw new Error("language not found");
