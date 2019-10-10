@@ -73,7 +73,7 @@ export class YoutubeCaption {
 
 		try {
 			captionTracks = await this.getCaptionTracks();
-		} catch(e) {
+		} catch (e) {
 			throw new Error("Unable to receive tracks");
 		}
 		const captionTrack = captionTracks.find((v) => v.languageCode === lang);
