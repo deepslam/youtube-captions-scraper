@@ -37,16 +37,20 @@ export class YoutubeCaption {
 	 */
 	public async getCaptionTracks(): Promise<ICaptionTrack[]> {
 		const videoInfo = await this.getVideoInfo();
-		const parsedUrl = querystring.parse(videoInfo);
-		// console.log(parsedUrl);
-		const player_response = parsedUrl.player_response as string;
-		// console.log("player response", player_response);
-		const playerResponse = JSON.parse(player_response);
-		// console.log("response", playerResponse);
-		const captions = playerResponse.captions.playerCaptionsTracklistRenderer;
-		const captionTracks = captions.captionTracks as ICaptionTrack[];
+		try {
+			const parsedUrl = querystring.parse(videoInfo);
+			// console.log(parsedUrl);
+			const player_response = parsedUrl.player_response as string;
+			// console.log("player response", player_response);
+			const playerResponse = JSON.parse(player_response);
+			// console.log("response", playerResponse);
+			const captions = playerResponse.captions.playerCaptionsTracklistRenderer;
+			const captionTracks = captions.captionTracks as ICaptionTrack[];
 
-		return captionTracks;
+			return captionTracks;
+		} catch (e) {
+			throw e;
+		}
 	}
 
 	/**
