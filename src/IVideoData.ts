@@ -15,10 +15,10 @@ export interface IVideoData {
   isOwnerViewing: boolean;
   isPrivate: boolean;
   isUnpluggedCorpus: boolean;
-  keywords: Array<string>;
+  keywords: string[];
   lengthSeconds: string;
   shortDescription: string;
-  thumbnails: Array<IThumbnail>;
+  thumbnails: IThumbnail[];
   useCipher: boolean;
   videoId: string;
   viewCount: string;

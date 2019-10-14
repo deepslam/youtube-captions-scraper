@@ -99,26 +99,6 @@ export class YoutubeCaption {
   }
 
   /**
-   * Retrieve Video Info
-   *
-   * @private
-   * @returns {Promise<string>}
-   * @memberof YoutubeCaption
-   */
-  private async getVideoInfo(): Promise<string> {
-    if (this._video_info) {
-      return this._video_info;
-    }
-
-    const { data } = await axios.get(
-      `https://youtube.com/get_video_info?video_id=${this.videoId}`
-    );
-    this._video_info = data;
-
-    return this._video_info;
-  }
-
-  /**
    * Retrieve Video Info as an object
    *
    * @returns {Promise<any>}
@@ -157,6 +137,26 @@ export class YoutubeCaption {
       }
     }
     return null;
+  }
+
+  /**
+   * Retrieve Video Info
+   *
+   * @private
+   * @returns {Promise<string>}
+   * @memberof YoutubeCaption
+   */
+  private async getVideoInfo(): Promise<string> {
+    if (this._video_info) {
+      return this._video_info;
+    }
+
+    const { data } = await axios.get(
+      `https://youtube.com/get_video_info?video_id=${this.videoId}`
+    );
+    this._video_info = data;
+
+    return this._video_info;
   }
 
   /**

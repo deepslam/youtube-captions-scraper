@@ -1,8 +1,9 @@
 import { ICaptionTrack } from "./ICaptionTrack";
 import { ISubtitle } from "./ISubtitle";
+import { IVideoData } from "./IVideoData";
 import { YoutubeCaption } from "./YoutubeCaption";
 
-export { YoutubeCaption, ISubtitle, ICaptionTrack };
+export { YoutubeCaption, ISubtitle, ICaptionTrack, IVideoData };
 
 interface ISubtitleOptions {
   videoID: string;
@@ -38,7 +39,7 @@ export async function getSubtitles({
  */
 export async function getVideoInfo({
   videoID
-}: ISubtitleOptions): Promise<any> {
+}: ISubtitleOptions): Promise<IVideoData> {
   const youtubeCaptions = new YoutubeCaption(videoID);
   return await youtubeCaptions.getVideoInfoObject();
 }
