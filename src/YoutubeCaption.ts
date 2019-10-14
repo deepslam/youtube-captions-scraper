@@ -6,6 +6,7 @@ import querystring from "querystring";
 
 import striptags from "striptags";
 import { ISubtitle } from "./ISubtitle";
+import { IVideoData } from "./IVideoData";
 
 const xml2js = require("react-native-xml2js");
 
@@ -123,11 +124,37 @@ export class YoutubeCaption {
    * @returns {Promise<any>}
    * @memberof YoutubeCaption
    */
-  public async getVideoInfoObject(): Promise<any> {
+  public async getVideoInfoObject(): Promise<IVideoData> {
     const videoInfo = await this.getVideoInfo();
     const info = querystring.parse(videoInfo);
-    if (info.player_response) {
-      return JSON.parse(info.player_response);
+    const player_response = info.player_response as string;
+    if (player_response) {
+      const parsedData = JSON.parse(player_response);
+      if (parsedData.videoDetails) {
+        return {
+          title: parsedData.videoDetails.title,
+          allowRatings: parsedData.videoDetails.allowRatings,
+          author: parsedData.videoDetails.author,
+          averageRating: parsedData.videoDetails.averageRating,
+          channelId: parsedData.videoDetails.channelId,
+          isCrawlable: parsedData.videoDetails.isCrawlable,
+          isLiveContent: parsedData.videoDetails.isLiveContent,
+          isOwnerViewing: parsedData.videoDetails.isOwnerViewing,
+          isPrivate: parsedData.videoDetails.isPrivate,
+          isUnpluggedCorpus: parsedData.videoDetails.isUnpluggedCorpus,
+          keywords: parsedData.videoDetails.keywords,
+          lengthSeconds: parsedData.videoDetails.lengthSeconds,
+          shortDescription: parsedData.videoDetails.shortDescription,
+          thumbnails:
+            parsedData.videoDetails.thumbnail &&
+            parsedData.videoDetails.thumbnail.thumbnails
+              ? parsedData.videoDetails.thumbnail.thumbnails
+              : [],
+          useCipher: parsedData.videoDetails.useCipher,
+          videoId: parsedData.videoDetails.videoId,
+          viewCount: parsedData.videoDetails.viewCount
+        };
+      }
     }
     return null;
   }
