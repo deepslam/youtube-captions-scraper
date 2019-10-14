@@ -5,8 +5,8 @@ import { YoutubeCaption } from "./YoutubeCaption";
 export { YoutubeCaption, ISubtitle, ICaptionTrack };
 
 interface ISubtitleOptions {
-	videoID: string;
-	lang?: "en" | "de" | "fr";
+  videoID: string;
+  lang?: "en" | "de" | "fr";
 }
 
 /**
@@ -20,11 +20,27 @@ interface ISubtitleOptions {
  * @returns {Promise<ISubtitle[]} subtitles
  */
 export async function getSubtitles({
-	videoID,
-	lang = "en",
+  videoID,
+  lang = "en"
 }: ISubtitleOptions): Promise<ISubtitle[]> {
-	const youtubeCaptions = new YoutubeCaption(videoID);
-	return await youtubeCaptions.getSubtitles(lang);
+  const youtubeCaptions = new YoutubeCaption(videoID);
+  return await youtubeCaptions.getSubtitles(lang);
+}
+
+/**
+ * Retrieves Information about certain video
+ *
+ * @export
+ * @param {ISubtitleOptions} {
+ * 	videoID,
+ * }
+ * @returns {Promise<ISubtitle[]} subtitles
+ */
+export async function getVideoInfo({
+  videoID
+}: ISubtitleOptions): Promise<any> {
+  const youtubeCaptions = new YoutubeCaption(videoID);
+  return await youtubeCaptions.getVideoInfoObject();
 }
 
 /**
@@ -38,14 +54,14 @@ export async function getSubtitles({
  * @returns {string} subtitles
  */
 export async function getSubtitlesContent({
-	videoID,
-	lang = "en",
+  videoID,
+  lang = "en"
 }: ISubtitleOptions): Promise<string> {
-	const subtitles = await getSubtitles({ videoID, lang });
-	let content = "";
-	for (const subtitle of subtitles) {
-		content += " " + subtitle.text;
-	}
+  const subtitles = await getSubtitles({ videoID, lang });
+  let content = "";
+  for (const subtitle of subtitles) {
+    content += " " + subtitle.text;
+  }
 
-	return content.replace(/([\s\r\n])+/g, " ");
+  return content.replace(/([\s\r\n])+/g, " ");
 }
