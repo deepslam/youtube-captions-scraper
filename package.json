@@ -1,6 +1,10 @@
 {
   "name": "youtube-captions-scraper-react-native",
+<<<<<<< HEAD
   "version": "1.0.9",
+=======
+  "version": "1.0.8",
+>>>>>>> 832d111598c3520f6c9c5acca4db98061d964a74
   "description": "Scrap youtube auto-generated captions",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
