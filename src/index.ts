@@ -6,7 +6,7 @@ export { YoutubeCaption, ISubtitle, ICaptionTrack };
 
 interface ISubtitleOptions {
 	videoID: string;
-	lang?: "en" | "de" | "fr";
+	lang?: "en" | "de" | "fr" | "es" | "ru" | "it";
 }
 
 /**

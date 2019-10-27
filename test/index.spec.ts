@@ -7,6 +7,7 @@ it("Extract estonia war subtitles", async () => {
 	const subtitles = await getSubtitles({ videoID: "HBA0xDHZjko" });
 	expect(subtitles[0]).to.deep.eq({
 		dur: "5.87",
+		htmlText: "November 19",
 		start: "6.62",
 		text: "November 19",
 	});
@@ -22,12 +23,18 @@ it("Extract automatic subtitles video", async () => {
 	expect(subtitles).to.contain("out what Alex made Alex is tiny LED matrix by the way oh let's have a look");
 }).timeout(10000);
 
+it("Extract Russian subtitles", async () => {
+	const subtitles = await getSubtitlesContent({ videoID: "s__wrEvEWJk", lang: "ru" });
+	expect(subtitles).to.contain("как было бы круто бросит все съесть машину и уехать закат");
+}).timeout(10000);
+
 describe("YoutubeCaptions", () => {
 	it("Extract estonia war subtitles with ", async () => {
 		const youtubeCaptions = new YoutubeCaption("HBA0xDHZjko");
 		const subtitles = await youtubeCaptions.getSubtitles();
 		expect(subtitles[0]).to.deep.eq({
 			dur: "5.87",
+			htmlText: "November 19",
 			start: "6.62",
 			text: "November 19",
 		});
