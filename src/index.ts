@@ -6,13 +6,8 @@ import { YoutubeCaption } from "./YoutubeCaption";
 export { YoutubeCaption, ISubtitle, ICaptionTrack, IVideoData };
 
 interface ISubtitleOptions {
-<<<<<<< HEAD
 	videoID: string;
 	lang?: "en" | "de" | "fr" | "es" | "ru" | "it";
-=======
-  videoID: string;
-  lang?: "en" | "de" | "fr";
->>>>>>> 832d111598c3520f6c9c5acca4db98061d964a74
 }
 
 /**

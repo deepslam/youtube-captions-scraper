@@ -84,14 +84,16 @@ export class YoutubeCaption {
 
     const result = await this.parseString(transcript);
     const lines = result.transcript.text.map((v: any) => {
-      const decodedHtml = he.decode(v._);
-      return {
-        text: striptags(decodedHtml),
-        htmlText: decodedHtml,
-        dur: v.$.dur,
-        start: v.$.start
-      };
-    });
+      if (v._ && v.$) {
+        const decodedHtml = he.decode(v._ || "");
+        return {
+          text: striptags(decodedHtml),
+          htmlText: decodedHtml,
+          dur: v.$.dur,
+          start: v.$.start
+        };
+      }
+    }).filter((i: any) => i !== undefined);
 
     this._subtitles[lang] = lines;
 
